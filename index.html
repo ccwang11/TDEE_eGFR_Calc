@@ -145,8 +145,8 @@
             <div class="form-group">
                 <label for="gender">性別 Gender:</label>
                 <div class="button-group" id="genderGroup">
-                    <button type="button" data-gender="male">男 M</button>
-                    <button type="button" data-gender="female">女 F</button>
+                    <button type="button" data-gender="male">男M</button>
+                    <button type="button" data-gender="female">女F</button>
                 </div>
                 <input type="hidden" id="gender" name="gender">
             </div>
@@ -178,19 +178,19 @@
             <!-- 胱蛋白C -->
             <div class="form-group">
                 <label for="cystatinC">胱蛋白C Cystatin-C:</label>
-                <input type="text" id="cystatinC" name="cystatinC" placeholder="可以空白 mg/L">
+                <input type="text" id="cystatinC" name="cystatinC" placeholder="可以空白 Optional mg/L">
             </div>
 
             <!-- 活動度 -->
             <div class="form-group">
                 <label for="activityLevel">活動度 Activity:</label>
                 <select id="activityLevel" name="activityLevel">
-                    <option value="0">久坐無活動</option>
-                    <option value="1">輕度活動每周 1-2 次</option>
-                    <option value="2">中度活動每周 2-3 次</option>
-                    <option value="3">費力活動每周 4-5 次</option>
-                    <option value="4">勞力工作或每日費力活動</option>
-                    <option value="5">運動員</option>
+                    <option value="0">久坐無活動 Sedentary</option>
+                    <option value="1">輕度活動每周 1-2 次 Lightly Active</option>
+                    <option value="2">中度活動每周 2-3 次 Moderately Active</option>
+                    <option value="3">費力活動每周 4-5 次 Very Active</option>
+                    <option value="4">勞力工作或每日費力活動 Extremely Active</option>
+                    <option value="5">運動員 Athlete</option>
                 </select>
             </div>
 
@@ -198,26 +198,26 @@
             <div class="form-group">
                 <label for="stressLevel">壓力因子 Stress:</label>
                 <select id="stressLevel" name="stressLevel">
-                    <option value="0">一般</option>
-                    <option value="1">感染或創傷</option>
-                    <option value="2">敗血症(輕)</option>
-                    <option value="3">敗血症(重)</option>
-                    <option value="4">手術</option>
-                    <option value="5">骨折</option>
-                    <option value="6">癌症</option>
-                    <option value="7">呼吸器</option>
-                    <option value="8">惡病質</option>
-                    <option value="9">多重器官衰竭</option>
-                    <option value="10">燒傷 10%</option>
-                    <option value="11">燒傷 20%</option>
-                    <option value="12">燒傷 30%</option>
-                    <option value="13">燒傷 40%</option>
-                    <option value="14">燒傷 50%</option>
-                    <option value="15">燒傷 60%</option>
-                    <option value="16">燒傷 70%</option>
-                    <option value="17">懷孕</option>
-                    <option value="18">哺乳</option>
-                    <option value="19">生長期</option>
+                    <option value="0">一般 No</option>
+                    <option value="1">感染或創傷 Infection/Injury</option>
+                    <option value="2">敗血症(輕) Sepsis(mild)</option>
+                    <option value="3">敗血症(重) Sepsis(severe)</option>
+                    <option value="4">手術 Operation</option>
+                    <option value="5">骨折 Fracture</option>
+                    <option value="6">癌症 Cancer</option>
+                    <option value="7">呼吸器 Ventilator</option>
+                    <option value="8">惡病質 Cachexia</option>
+                    <option value="9">多重器官衰竭 Organs failure</option>
+                    <option value="10">燒傷 Burn 10%</option>
+                    <option value="11">燒傷 Burn 20%</option>
+                    <option value="12">燒傷 Burn 30%</option>
+                    <option value="13">燒傷 Burn 40%</option>
+                    <option value="14">燒傷 Burn 50%</option>
+                    <option value="15">燒傷 Burn 60%</option>
+                    <option value="16">燒傷 Burn 70%</option>
+                    <option value="17">懷孕 Pregnancy</option>
+                    <option value="18">哺乳 Breast feeding</option>
+                    <option value="19">生長期 Child</option>
                 </select>
             </div>
 
@@ -225,15 +225,15 @@
             <div class="form-group">
                 <label for="dialysis">是否透析 dialysis:</label>
                 <div class="button-group" id="dialysisGroup">
-                    <button type="button" data-dialysis="true">是 Y</button>
-                    <button type="button" data-dialysis="false">否 N</button>
+                    <button type="button" data-dialysis="true">是Y</button>
+                    <button type="button" data-dialysis="false">否N</button>
                 </div>
                 <input type="hidden" id="dialysis" name="dialysis">
             </div>
 
             <!-- 基礎代謝率算式選擇 -->
             <div class="form-group">
-                <label for="BMREquation">基礎代謝算式 BMR equation:</label>
+                <label for="BMREquation">基礎代謝率算式 BMR Equation:</label>
                 <div class="button-group" id="BMREquationGroup">
                     <button type="button" data-BMREquation="MSJ">MSJ</button>
                     <button type="button" data-BMREquation="HB">HB</button>
@@ -245,8 +245,8 @@
             <div class="form-group">
                 <label for="formula">食物配方 Formula:</label>
                 <select id="formula" name="formula">
-                    <option value="日常食物">日常食物</option>
-                    <option value="高蛋白粉">高蛋白粉</option>
+                    <option value="日常食物">日常食物 Daily food</option>
+                    <option value="高蛋白粉">高蛋白粉 Protein powder</option>
                     <option value="益富元氣強(透析)">益富元氣強(透析)</option>
                     <option value="益富易能充(腎病)">益富易能充(腎病)</option>
                     <option value="益富保惠壯(肺病)">益富保惠壯(肺病)</option>
