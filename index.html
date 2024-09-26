@@ -73,7 +73,7 @@
         }
 
         .button-group button {
-            flex: 2; /* 改為更大的數值來增加按鈕的寬度 */
+            width: 200px;
             padding: 10px;
             font-size: 12px;
             background-color: #f1f1f1;
@@ -81,7 +81,6 @@
             border-radius: 4px;
             cursor: pointer;
             color: #333;
-            width: auto; /* 確保按鈕根據內容自適應寬度 */
         }
 
         .button-group button.selected {
@@ -146,8 +145,8 @@
             <div class="form-group">
                 <label for="gender">性別 Gender:</label>
                 <div class="button-group" id="genderGroup">
-                    <button type="button" data-gender="male">男M</button>
-                    <button type="button" data-gender="female">女F</button>
+                    <button type="button" data-gender="male">男 M</button>
+                    <button type="button" data-gender="female">女 F</button>
                 </div>
                 <input type="hidden" id="gender" name="gender">
             </div>
@@ -226,18 +225,18 @@
             <div class="form-group">
                 <label for="dialysis">是否透析 dialysis:</label>
                 <div class="button-group" id="dialysisGroup">
-                    <button type="button" data-dialysis="true">是Y</button>
-                    <button type="button" data-dialysis="false">否N</button>
+                    <button type="button" data-dialysis="true">是 Y</button>
+                    <button type="button" data-dialysis="false">否 N</button>
                 </div>
                 <input type="hidden" id="dialysis" name="dialysis">
             </div>
 
             <!-- 基礎代謝率算式選擇 -->
             <div class="form-group">
-                <label for="BMREquation">基礎代謝率算式 BMR Equation:</label>
+                <label for="BMREquation">選擇基礎代謝率算式 BMR Equation:</label>
                 <div class="button-group" id="BMREquationGroup">
-                    <button type="button" data-BMREquation="MSJ">MSJ</button>
-                    <button type="button" data-BMREquation="HB">HB</button>
+                    <button type="button" data-BMREquation="MSJ">Mifflin-St Jeor</button>
+                    <button type="button" data-BMREquation="HB">Harris-Benedict</button>
                 </div>
                 <input type="hidden" id="BMREquation" name="BMREquation">
             </div>
@@ -636,7 +635,7 @@
             <h3>${caseName} ${formattedDate} 營養評估：</h3>
             ${eGFRResult}
             <p>身高 ${height} 公分, 體重 ${weight} 公斤, 身體質量指數 (BMI) ${BMI} </p>
-            <p>基礎代謝率 (BMR) ${BMR} (Mifflin-St Jeor); ${BEE} (Harris-Benedict) 大卡 </p>
+            <p>基礎代謝率 (BMR) ${BMR} (MSJ); ${BEE} (HB) 大卡 </p>
             <p>${TDEEType} ${TDEE} 大卡 (根據 ${BMREquation} 算式) </p>
             <p>每日蛋白質建議量 ${proteinNeeds.toFixed(1)} 克 (建議熱量的 ${proteinPercentage}%) </p>
             <p>食物組合：${formulaDetails.join(' + ')} </p>
