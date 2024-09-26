@@ -188,10 +188,10 @@
                 <label for="activityLevel">活動度 Activity:</label>
                 <select id="activityLevel" name="activityLevel">
                     <option value="0">久坐無活動 Sedentary</option>
-                    <option value="1">輕度活動每周 1-2 次 Lightly Active</option>
-                    <option value="2">中度活動每周 2-3 次 Moderately Active</option>
-                    <option value="3">費力活動每周 4-5 次 Very Active</option>
-                    <option value="4">勞力工作或每日費力活動 Extremely Active</option>
+                    <option value="1">輕度活動每周 1-2 次 Lightly active</option>
+                    <option value="2">中度活動每周 2-3 次 Moderately active</option>
+                    <option value="3">費力活動每周 4-5 次 Very active</option>
+                    <option value="4">勞力工作或每日費力活動 Extremely active</option>
                     <option value="5">運動員 Athlete</option>
                 </select>
             </div>
@@ -219,13 +219,13 @@
                     <option value="16">燒傷 Burn 70%</option>
                     <option value="17">懷孕 Pregnancy</option>
                     <option value="18">哺乳 Breast feeding</option>
-                    <option value="19">生長期 Child</option>
+                    <option value="19">生長期 Child/Adolescence</option>
                 </select>
             </div>
 
             <!-- 是否透析 -->
             <div class="form-group">
-                <label for="dialysis">是否透析 dialysis:</label>
+                <label for="dialysis">是否透析 Dialysis:</label>
                 <div class="button-group" id="dialysisGroup">
                     <button type="button" data-dialysis="true">是 Yes</button>
                     <button type="button" data-dialysis="false">否 No</button>
@@ -235,7 +235,7 @@
 
             <!-- 基礎代謝率算式選擇 -->
             <div class="form-group">
-                <label for="BMREquation">選擇基礎代謝率算式 BMR Equation:</label>
+                <label for="BMREquation">選擇基礎代謝率算式 BMR equation:</label>
                 <div class="button-group" id="BMREquationGroup">
                     <button type="button" data-BMREquation="MSJ">Mifflin-St Jeor</button>
                     <button type="button" data-BMREquation="HB">Harris-Benedict</button>
@@ -294,7 +294,7 @@
             </div>
 
             <!-- 加入按鈕 -->
-            <button type="button" id="addFormula">加入配方 Add Formula</button>
+            <button type="button" id="addFormula">加入配方 Add formula</button>
         </div>
 
     </form>
@@ -303,9 +303,9 @@
     <table id="selectedFormulasTable">
         <thead>
             <tr>
-                <th>份數 potion</th>
-                <th>熱量 calories</th>
-                <th>蛋白質 protein</th>
+                <th>份數 Potion</th>
+                <th>熱量 Calories(kcal)</th>
+                <th>蛋白質 Protein(g)</th>
             </tr>
         </thead>
         <tbody id="formulaList">
