@@ -1,2 +1,1 @@
-There are significant concerns regarding the nutritional needs of elderly, ill, hospitalized, or long-term care patients. This user-friendly form allows you to quickly assess caloric and protein requirements based on factors such as basal metabolic rate, activity level, stress level, and renal function. Additionally, you can compare the current feeding formula or oral intake with the estimated nutritional needs. The form includes a variety of commercial formulas. It was originally created in Traditional Chinese for my colleagues.
-我們常需要針對老年人、病患、住院者或長期照護患者的營養需求進行評估。此簡便易用的表單可以讓您根據基礎代謝率、活動量、壓力水平及腎功能等因素快速評估所需的熱量和蛋白質。此外，您還可以將當前的餵食配方或日常食物與估算的營養需求進行比較。表單中包含了多種市售配方。此表單是為我的同事們以繁體中文編寫的。
+
