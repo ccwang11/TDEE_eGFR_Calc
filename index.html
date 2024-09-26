@@ -137,53 +137,53 @@
         <div class="form-section">
             <!-- 姓名 -->
             <div class="form-group">
-                <label for="age">姓名:</label>
-                <input type="text" id="caseName" name="caseName" placeholder="可以空白">
+                <label for="age">姓名 Name:</label>
+                <input type="text" id="caseName" name="caseName" placeholder="可以空白 Optional">
             </div>
 
             <!-- 性別 -->
             <div class="form-group">
-                <label for="gender">性別:</label>
+                <label for="gender">性別 Gender:</label>
                 <div class="button-group" id="genderGroup">
-                    <button type="button" data-gender="male">男</button>
-                    <button type="button" data-gender="female">女</button>
+                    <button type="button" data-gender="male">男 M</button>
+                    <button type="button" data-gender="female">女 F</button>
                 </div>
                 <input type="hidden" id="gender" name="gender">
             </div>
 
             <!-- 年齡 -->
             <div class="form-group">
-                <label for="age">年齡:</label>
+                <label for="age">年齡 Age:</label>
                 <input type="text" id="age" name="age" placeholder="歲">
             </div>
 
             <!-- 身高 -->
             <div class="form-group">
-                <label for="height">身高:</label>
+                <label for="height">身高 Height:</label>
                 <input type="text" id="height" name="height" placeholder="公分">
             </div>
 
             <!-- 體重 -->
             <div class="form-group">
-                <label for="weight">體重:</label>
+                <label for="weight">體重 Weight:</label>
                 <input type="text" id="weight" name="weight" placeholder="公斤">
             </div>
 
             <!-- 肌酸酐 -->
             <div class="form-group">
-                <label for="creatinine">肌酸酐 (Creatinine):</label>
+                <label for="creatinine">肌酸酐 Creatinine:</label>
                 <input type="text" id="creatinine" name="creatinine" placeholder="mg/dL">
             </div>
 
             <!-- 胱蛋白C -->
             <div class="form-group">
-                <label for="cystatinC">胱蛋白C (Cystatin C):</label>
+                <label for="cystatinC">胱蛋白C Cystatin-C:</label>
                 <input type="text" id="cystatinC" name="cystatinC" placeholder="可以空白 mg/L">
             </div>
 
             <!-- 活動度 -->
             <div class="form-group">
-                <label for="activityLevel">活動度:</label>
+                <label for="activityLevel">活動度 Activity:</label>
                 <select id="activityLevel" name="activityLevel">
                     <option value="0">久坐無活動</option>
                     <option value="1">輕度活動每周 1-2 次</option>
@@ -196,7 +196,7 @@
 
             <!-- 壓力因子 -->
             <div class="form-group">
-                <label for="stressLevel">壓力因子:</label>
+                <label for="stressLevel">壓力因子 Stress:</label>
                 <select id="stressLevel" name="stressLevel">
                     <option value="0">一般</option>
                     <option value="1">感染或創傷</option>
@@ -223,17 +223,17 @@
 
             <!-- 是否透析 -->
             <div class="form-group">
-                <label for="dialysis">是否透析:</label>
+                <label for="dialysis">是否透析 dialysis:</label>
                 <div class="button-group" id="dialysisGroup">
-                    <button type="button" data-dialysis="true">是</button>
-                    <button type="button" data-dialysis="false">否</button>
+                    <button type="button" data-dialysis="true">是 Y</button>
+                    <button type="button" data-dialysis="false">否 N</button>
                 </div>
                 <input type="hidden" id="dialysis" name="dialysis">
             </div>
 
             <!-- 基礎代謝率算式選擇 -->
             <div class="form-group">
-                <label for="BMREquation">基礎代謝率算式:</label>
+                <label for="BMREquation">基礎代謝算式 BMR equation:</label>
                 <div class="button-group" id="BMREquationGroup">
                     <button type="button" data-BMREquation="MSJ">MSJ</button>
                     <button type="button" data-BMREquation="HB">HB</button>
@@ -243,7 +243,7 @@
 
             <!-- 食物配方選擇 -->
             <div class="form-group">
-                <label for="formula">食物配方:</label>
+                <label for="formula">食物配方 Formula:</label>
                 <select id="formula" name="formula">
                     <option value="日常食物">日常食物</option>
                     <option value="高蛋白粉">高蛋白粉</option>
@@ -292,7 +292,7 @@
             </div>
 
             <!-- 加入按鈕 -->
-            <button type="button" id="addFormula">加入配方</button>
+            <button type="button" id="addFormula">加入配方 Add Formula</button>
         </div>
 
     </form>
@@ -301,9 +301,9 @@
     <table id="selectedFormulasTable">
         <thead>
             <tr>
-                <th>份數</th>
-                <th>熱量</th>
-                <th>蛋白質</th>
+                <th>份數 potion</th>
+                <th>熱量 calories</th>
+                <th>蛋白質 protein</th>
             </tr>
         </thead>
         <tbody id="formulaList">
@@ -312,7 +312,7 @@
     </table>
 
     <!-- 計算按鈕 -->
-    <button type="submit" form="healthForm">開始計算</button>
+    <button type="submit" form="healthForm">開始計算 Submit</button>
 
     <div id="results" class="results"></div>
 </div>
