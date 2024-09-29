@@ -242,9 +242,15 @@
                 <input type="hidden" id="BMREquation" name="BMREquation">
             </div>
 
+            <!-- 增減重參數 -->
+            <div class="form-group">
+                <label for="TDEEAdjustment">增減重 TDEE ±:</label>
+                <input type="text" id="TDEEAdjustment" name="TDEEAdjustment" placeholder="kcal" value="500">
+            </div>
+
             <!-- 報告語言選擇 -->
             <div class="form-group">
-                <label for="reportLanguage">報告 Output in:</label>
+                <label for="reportLanguage">報告語言 Output in:</label>
                 <div class="button-group" id="reportLanguageGroup">
                     <button type="button" data-reportLanguage="TC">中文</button>
                     <button type="button" data-reportLanguage="Eng">English</button>
@@ -500,6 +506,7 @@
         let stressLevel = document.getElementById('stressLevel').value;
         let dialysis = document.getElementById('dialysis').value;
         let BMREquation = document.getElementById('BMREquation').value;
+        let TDEEAdjustment = document.getElementById('TDEEAdjustment').value;
         let reportLanguage = document.getElementById('reportLanguage').value;
         
         // 取得今天日期
@@ -557,18 +564,18 @@
         } else if (BMREquation === 'HB') {
             TDEE = Math.round(BEE * activityFactors[activityLevel] * stressFactors[stressLevel]);
         }
-        let TDEEType = "每日所需熱量 (TDEE)";
+        let TDEEType = reportLanguage === 'TC' ? "每日所需熱量 (TDEE)" : "TDEE";
 
         // TDEE 調整邏輯
         if (BMI < 18.5) {
-            TDEE += 300;
-            TDEEType = "每日增重熱量 (TDEE+300)";
+            TDEE += TDEEAdjustment;
+            TDEEType = reportLanguage === 'TC' ? `每日增重熱量 (TDEE+${TDEEAdjustment})` : `Underweight (TDEE+${TDEEAdjustment})`;
         } else if (dialysis  === 'true' && BMI > 35) {
-            TDEE = Math.max(BMR, TDEE - 300);
-            TDEEType = "每日減重熱量 (TDEE-300)";
+            TDEE = Math.max(BMR, TDEE - TDEEAdjustment);
+            TDEEType = reportLanguage === 'TC' ? `每日減重熱量 (TDEE-${TDEEAdjustment})`: `Overweight (TDEE-${TDEEAdjustment})`;
         } else if (dialysis === 'false' && BMI > 25) {
-            TDEE = Math.max(BMR, TDEE - 300);
-            TDEEType = "每日減重熱量 (TDEE-300)";
+            TDEE = Math.max(BMR, TDEE - TDEEAdjustment);
+            TDEEType = reportLanguage === 'TC' ? `每日減重熱量 (TDEE-${TDEEAdjustment})` : `Overweight (TDEE-${TDEEAdjustment})`;
         }
 
         // 5. 計算蛋白質需求
@@ -624,9 +631,9 @@
         let absoluteTDEEDifference = Math.abs(TDEEDifference.toFixed(0));
 
         if (TDEEDifference > 0) {
-            TDEEComparison = `比建議量多 ${absoluteTDEEDifference}`;
+            TDEEComparison = reportLanguage === 'TC' ? `比建議量多 ${absoluteTDEEDifference}` : `recommended calories + ${absoluteTDEEDifference}`;
         } else {
-            TDEEComparison = `比建議量少 ${absoluteTDEEDifference}`;
+            TDEEComparison = reportLanguage === 'TC' ? `比建議量少 ${absoluteTDEEDifference}`: `recommended calories - ${absoluteTDEEDifference}`;
         }
 
         // 比較每日攝取蛋白質量與蛋白質建議量
@@ -634,9 +641,9 @@
         let absoluteProteinDifference = Math.abs(proteinDifference.toFixed(1));
 
         if (proteinDifference > 0) {
-            proteinComparison = `比建議量多 ${absoluteProteinDifference}`;
+            proteinComparison = reportLanguage === 'TC' ? `比建議量多 ${absoluteProteinDifference}` : `recommended protein + ${absoluteProteinDifference}`;
         } else {
-            proteinComparison = `比建議量少 ${absoluteProteinDifference}`;
+            proteinComparison = reportLanguage === 'TC' ? `比建議量少 ${absoluteProteinDifference}`: `recommended protein - ${absoluteProteinDifference}`;
         }
 
         // 計算攝取蛋白質熱量佔攝取熱量的百分比
@@ -648,22 +655,36 @@
 
         if (creatinine && !cystatinC) {
             // 只有 Creatinine，顯示 eGFRcr
-            eGFRResult = `<p>腎絲球過濾率 (eGFRcr): ${eGFRcr.toFixed(0)} mL/min/1.73m² (MDRD-TW 2011) </p>`;
+            eGFRResult = reportLanguage === 'TC' ? 
+                `<p>腎絲球過濾率 (eGFRcr): ${eGFRcr.toFixed(0)} mL/min/1.73m² (MDRD-TW 2011) </p>` :
+                `<p>eGFRcr: ${eGFRcr.toFixed(0)} mL/min/1.73m² (MDRD-TW 2011) </p>`;
         } else if (creatinine && cystatinC) {
             // Creatinine 和 Cystatin C 都有，顯示 eGFRcr-cys
-            eGFRResult = `<p>腎絲球過濾率 (eGFRcr-cys): ${eGFRcrCys.toFixed(0)} mL/min/1.73m² (CKD-EPI 2021) </p>`;
+            eGFRResult = reportLanguage === 'TC' ? 
+                `<p>腎絲球過濾率 (eGFRcr-cys): ${eGFRcrCys.toFixed(0)} mL/min/1.73m² (CKD-EPI 2021) </p>` :
+                `<p>eGFRcr-cys: ${eGFRcrCys.toFixed(0)} mL/min/1.73m² (CKD-EPI 2021) </p>`;
         }
 
-        resultsDiv.innerHTML = `
+        resultsDiv.innerHTML = reportLanguage === 'TC' ? `
             <h3>${caseName} ${formattedDate} 營養評估：</h3>
             ${eGFRResult}
-            <p>身高 ${height} 公分, 體重 ${weight} 公斤, 身體質量指數 (BMI) ${BMI} </p>
-            <p>基礎代謝率 (BMR) ${BMR} (MSJ); ${BEE} (HB) 大卡 </p>
-            <p>${TDEEType} ${TDEE} 大卡 (根據 ${BMREquation} 算式) </p>
-            <p>每日蛋白質建議量 ${proteinNeeds.toFixed(1)} 克 (建議熱量的 ${proteinPercentage}%) </p>
-            <p>食物組合：${formulaDetails.join(' + ')} </p>
-            <p>每日攝取熱量 ${totalCalories.toFixed(0)} 大卡 (${TDEEComparison} 大卡) </p>
-            <p>每日攝取蛋白質 ${totalProtein.toFixed(1)} 克 (${proteinComparison} 克, 體重 x ${proteinBWRatio}, 攝取熱量的 ${totalProteinPercentage}%) </p>
+            <p>身高 ${height} 公分, 體重 ${weight} 公斤, 身體質量指數 (BMI) ${BMI}</p>
+            <p>基礎代謝率 (BMR) ${BMR} (MSJ); ${BEE} (HB) 大卡</p>
+            <p>${TDEEType} ${TDEE} 大卡 (根據 ${BMREquation} 算式)</p>
+            <p>每日蛋白質建議量 ${proteinNeeds.toFixed(1)} 克 (建議熱量的 ${proteinPercentage}%)</p>
+            <p>食物組合：${formulaDetails.join(' + ')}</p>
+            <p>每日攝取熱量 ${totalCalories.toFixed(0)} 大卡 (${TDEEComparison} 大卡)</p>
+            <p>每日攝取蛋白質 ${totalProtein.toFixed(1)} 克 (${proteinComparison} 克, 體重 x ${proteinBWRatio}, 攝取熱量的 ${totalProteinPercentage}%)</p>
+        ` : `
+            <h3>${caseName} ${formattedDate} Nutritional Assessment:</h3>
+            ${eGFRResult}
+            <p>Height: ${height} cm, Weight: ${weight} kg, BMI: ${BMI}</p>
+            <p>BMR: ${BMR} (MSJ); ${BEE} (HB) kcal</p>
+            <p>${TDEEType}: ${TDEE} kcal (by ${BMREquation} equation)</p>
+            <p>Daily protein requirement: ${proteinNeeds.toFixed(1)} g (${proteinPercentage}% of recommended calories)</p>
+            <p>Selected foods: ${formulaDetails.join(' + ')}</p>
+            <p>Daily calorie intake: ${totalCalories.toFixed(0)} kcal (${TDEEComparison} kcal)</p>
+            <p>Daily protein intake: ${totalProtein.toFixed(1)} g (${proteinComparison} g, Weight x ${proteinBWRatio}, ${totalProteinPercentage}% of intake calories)</p>
         `;
     });
 
