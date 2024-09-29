@@ -242,6 +242,16 @@
                 <input type="hidden" id="BMREquation" name="BMREquation">
             </div>
 
+            <!-- 報告語言選擇 -->
+            <div class="form-group">
+                <label for="reportLanguage">報告 Output in:</label>
+                <div class="button-group" id="reportLanguageGroup">
+                    <button type="button" data-reportLanguage="TC">中文</button>
+                    <button type="button" data-reportLanguage="Eng">English</button>
+                </div>
+                <input type="hidden" id="reportLanguage" name="reportLanguage">
+            </div>
+
             <!-- 食物配方選擇 -->
             <div class="form-group">
                 <label for="formula">食物配方 (高-低蛋白):</label>
@@ -359,6 +369,20 @@
         });
     });
 
+    // 語言選擇邏輯
+    document.querySelectorAll('#reportLanguageGroup button').forEach(function(button) {
+        button.addEventListener('click', function() {
+            // 更新隱藏的 input 值
+            document.getElementById('reportLanguage').value = this.getAttribute('data-reportLanguage');
+            // 清除所有按鈕的選擇狀態
+            document.querySelectorAll('#reportLanguageGroup button').forEach(function(btn) {
+                btn.classList.remove('selected');
+            });
+            // 為當前按鈕添加選擇狀態
+            this.classList.add('selected');
+        });
+    });
+    
     // 定義配方的對應熱量和蛋白質
     const formulaData = {
         "日常食物": {calories: 0, protein: 0},
@@ -476,7 +500,8 @@
         let stressLevel = document.getElementById('stressLevel').value;
         let dialysis = document.getElementById('dialysis').value;
         let BMREquation = document.getElementById('BMREquation').value;
-
+        let reportLanguage = document.getElementById('reportLanguage').value;
+        
         // 取得今天日期
         let currentDate = new Date();
         let formattedDate = `${currentDate.getFullYear()}/${(currentDate.getMonth() + 1).toString().padStart(2, '0')}/${currentDate.getDate().toString().padStart(2, '0')}`;
