@@ -4,6 +4,8 @@ There are significant concerns regarding the nutritional needs of elderly, ill, 
 
 版本更新 Version history：
 
+V2.3: 2024/9/29 蛋白質需求量考慮壓力因子 Protein needs adjust by stress factors.
+
 V2.2: 2024/09/25 可選擇算式，顯示蛋白質佔熱量比例 Choose BMR equations. Show protein calories ratio. 
 
 V2.0: 2024/09/24 加入 Harris-Benedict 算式和壓力因子參數 Add Harris-Benedict equation & stress factors. 
