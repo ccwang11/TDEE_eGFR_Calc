@@ -392,48 +392,48 @@
     
     // 定義配方的對應熱量和蛋白質
     const formulaData = {
-        "日常食物": {calories: 0, protein: 0},
-        "高蛋白粉": {calories: 32, protein: 8},
-        "補體素(高蛋白)": {calories: 87.6, protein: 12.8},
-        "益富元氣強(透析)": {calories: 103, protein: 8.4},
-        "益富益力壯給力": {calories: 250, protein: 13.8},
-        "補體素DM低GI": {calories: 252, protein: 12.8},
-        "三友糖零寶DM": {calories: 250, protein: 12.6},
-        "益富益力壯DM": {calories: 250, protein: 12.6},
-        "雀巢佳易得": {calories: 256, protein: 12.9},
-        "佳倍優元氣高鈣": {calories: 232, protein: 11.4},
-        "亞培葡勝納DM": {calories: 192, protein: 9.3},
-        "益富益力壯益生菌": {calories: 236, protein: 11.2},
-        "紅牛愛基DM": {calories: 251, protein: 11.5},
-        "桂格完膳DM": {calories: 250, protein: 11.3},
-        "力增洗腎": {calories: 425, protein: 19.1},
-        "補體素洗腎": {calories: 450, protein: 20.2},
-        "三多補體康均衡": {calories: 250, protein: 10.7},
-        "桂格完膳雙蛋白": {calories: 250, protein: 10.5},
-        "益富益力壯+經典": {calories: 250, protein: 10.5},
-        "補體素優纖": {calories: 250, protein: 10.5},
-        "補體素優纖A+": {calories: 250, protein: 10.5},
-        "三友安體素": {calories: 250, protein: 10.4},
-        "亞培安素雙卡": {calories: 478, protein: 19.9},
-        "益富益力壯17": {calories: 250, protein: 10.4},
-        "紅牛愛基均衡": {calories: 251, protein: 10.4},
-        "益富益力康高纖": {calories: 251, protein: 10.4},
-        "益富益力壯+": {calories: 254, protein: 10.4},
-        "寶瀛康素": {calories: 249, protein: 10.1},
-        "藻好康": {calories: 250, protein: 10.1},
-        "亞培安素": {calories: 262, protein: 10.5},
-        "桂格完膳": {calories: 250, protein: 10},
-        "桂格完膳植物蛋白": {calories: 250, protein: 10},
-        "益富保惠壯(肺病)": {calories: 263, protein: 10.5},
-        "舒體康含纖均衡": {calories: 250, protein: 10},
-        "力增均衡": {calories: 250, protein: 9.4},
-        "佳倍優均衡": {calories: 125, protein: 4.7},
-        "亞培安素少甜": {calories: 230, protein: 8.6},
-        "愛力安": {calories: 253, protein: 9.4},
-        "益富益力壯經典(大)": {calories: 300, protein: 10.6},
-        "益富益力壯經典": {calories: 251, protein: 8.8},
-        "亞培腎補納(雙卡低蛋白)": {calories: 425, protein: 10.6},
-        "益富易能充(腎病)": {calories: 200, protein: 0.8},
+        "日常食物": {calories: 0, protein: 0, proteinRatio: 0},
+        "高蛋白粉": {calories: 32, protein: 8, proteinRatio: 100},
+        "補體素(高蛋白)": {calories: 87.6, protein: 12.8, proteinRatio: 58.4},
+        "益富元氣強(透析)": {calories: 103, protein: 8.4, proteinRatio: 32.6},
+        "益富益力壯給力": {calories: 250, protein: 13.8, proteinRatio: 22.1},
+        "補體素DM低GI": {calories: 252, protein: 12.8, proteinRatio: 20.3},
+        "三友糖零寶DM": {calories: 250, protein: 12.6, proteinRatio: 20.2},
+        "益富益力壯DM": {calories: 250, protein: 12.6, proteinRatio: 20.2},
+        "雀巢佳易得": {calories: 256, protein: 12.9, proteinRatio: 20.2},
+        "佳倍優元氣高鈣": {calories: 232, protein: 11.4, proteinRatio: 19.7},
+        "亞培葡勝納DM": {calories: 192, protein: 9.3, proteinRatio: 19.4},
+        "益富益力壯益生菌": {calories: 236, protein: 11.2, proteinRatio: 19},
+        "紅牛愛基DM": {calories: 251, protein: 11.5, proteinRatio: 18.3},
+        "桂格完膳DM": {calories: 250, protein: 11.3, proteinRatio: 18.1},
+        "力增洗腎": {calories: 425, protein: 19.1, proteinRatio: 18},
+        "補體素洗腎": {calories: 450, protein: 20.2, proteinRatio: 18},
+        "三多補體康均衡": {calories: 250, protein: 10.7, proteinRatio: 17.1},
+        "桂格完膳雙蛋白": {calories: 250, protein: 10.5, proteinRatio: 16.8},
+        "益富益力壯+經典": {calories: 250, protein: 10.5, proteinRatio: 16.8},
+        "補體素優纖": {calories: 250, protein: 10.5, proteinRatio: 16.8},
+        "補體素優纖A+": {calories: 250, protein: 10.5, proteinRatio: 16.8},
+        "三友安體素": {calories: 250, protein: 10.4, proteinRatio: 16.6},
+        "亞培安素雙卡": {calories: 478, protein: 19.9, proteinRatio: 16.7},
+        "益富益力壯17": {calories: 250, protein: 10.4, proteinRatio: 16.6},
+        "紅牛愛基均衡": {calories: 251, protein: 10.4, proteinRatio: 16.6},
+        "益富益力康高纖": {calories: 251, protein: 10.4, proteinRatio: 16.6},
+        "益富益力壯+": {calories: 254, protein: 10.4, proteinRatio: 16.4},
+        "寶瀛康素": {calories: 249, protein: 10.1, proteinRatio: 16.2},
+        "藻好康": {calories: 250, protein: 10.1, proteinRatio: 16.2},
+        "亞培安素": {calories: 262, protein: 10.5, proteinRatio: 16},
+        "桂格完膳": {calories: 250, protein: 10, proteinRatio: 16},
+        "桂格完膳植物蛋白": {calories: 250, protein: 10, proteinRatio: 16},
+        "益富保惠壯(肺病)": {calories: 263, protein: 10.5, proteinRatio: 16},
+        "舒體康含纖均衡": {calories: 250, protein: 10, proteinRatio: 16},
+        "力增均衡": {calories: 250, protein: 9.4, proteinRatio: 15},
+        "佳倍優均衡": {calories: 125, protein: 4.7, proteinRatio: 15},
+        "亞培安素少甜": {calories: 230, protein: 8.6, proteinRatio: 15},
+        "愛力安": {calories: 253, protein: 9.4, proteinRatio: 14.9},
+        "益富益力壯經典(大)": {calories: 300, protein: 10.6, proteinRatio: 14.1},
+        "益富益力壯經典": {calories: 251, protein: 8.8, proteinRatio: 14},
+        "亞培腎補納(雙卡低蛋白)": {calories: 425, protein: 10.6, proteinRatio: 10},
+        "益富易能充(腎病)": {calories: 200, protein: 0.8, proteinRatio: 1.6},
         // 加入更多配方
     };
 
@@ -650,6 +650,51 @@
         // 計算攝取蛋白質熱量佔攝取熱量的百分比
         let totalProteinPercentage = Math.round((totalProtein / totalCalories) * 400);  // 計算百分比並四捨五入到整數
 
+        // 初始化日常食物的相關變數
+        let dailyFoodCalories = 0;
+        let dailyFoodProtein = 0;
+        let dailyFoodPortions = 0;
+        let dailyFoodSelected = false;
+
+        // 遍歷表格中的每個配方行，找到 "日常食物" 並取得相關數據
+        document.querySelectorAll('#formulaList tr').forEach(function(row, index, rows) {
+            if (index % 2 !== 0) {  // 處理數據行 (偶數行是配方名稱行)
+                let formulaName = rows[index - 1].cells[0].textContent;  // 從上一行取得配方名稱
+                let portion = parseFloat(row.cells[0].querySelector('input').value);
+                let calories = parseFloat(row.cells[1].querySelector('input').value);
+                let protein = parseFloat(row.cells[2].querySelector('input').value);
+
+            if (formulaName === '日常食物' && !isNaN(portion) && !isNaN(calories) && !isNaN(protein)) {
+                dailyFoodCalories = calories;
+                dailyFoodProtein = protein;
+                dailyFoodPortions = portion;
+                dailyFoodSelected = true;  // 標記已經選擇了日常食物
+                }
+            }
+        });
+
+        // 根據是否選擇了日常食物來計算去日常食物後的熱量和蛋白質需求
+        let TDEEMinusFood = TDEE;
+        let proteinNeedsMinusFood = proteinNeeds;
+
+        if (dailyFoodSelected) {
+            TDEEMinusFood = TDEE - (dailyFoodCalories * dailyFoodPortions);
+            proteinNeedsMinusFood = proteinNeeds - (dailyFoodProtein * dailyFoodPortions);
+        }
+
+        // 計算去日常食物後的蛋白質熱量比例
+        let proteinNeedsMinusFoodPercentage = Math.round((proteinNeedsMinusFood / TDEEMinusFood) * 400);
+
+        // 選擇最適合的配方
+        let mostFitFormula = Object.keys(formulaData).reduce((closest, current) => {
+            return Math.abs(formulaData[current].proteinRatio - proteinNeedsMinusFoodPercentage) <
+               Math.abs(formulaData[closest].proteinRatio - proteinNeedsMinusFoodPercentage)
+                ? current
+                : closest;
+        }, Object.keys(formulaData)[0]);
+
+        let mostFitFormulaPotion = (TDEEMinusFood / formulaData[mostFitFormula].calories).toFixed(1);
+
         // 輸出結果
         const resultsDiv = document.getElementById('results');
         let eGFRResult = '';
@@ -676,6 +721,7 @@
             <p>食物組合：${formulaDetails.join(' + ')}</p>
             <p>每日攝取熱量 ${totalCalories.toFixed(0)} 大卡 (${TDEEComparison} 大卡)</p>
             <p>每日攝取蛋白質 ${totalProtein.toFixed(1)} 克 (${proteinComparison} 克, 體重 x ${proteinBWRatio}, 攝取熱量的 ${totalProteinPercentage}%)</p>
+            <p>建議配方：${mostFitFormula} 每天 ${mostFitFormulaPotion} 份</p>
         ` : `
             <h3>${caseName} ${formattedDate} Nutritional Assessment:</h3>
             ${eGFRResult}
@@ -686,6 +732,7 @@
             <p>Selected foods: ${formulaDetails.join(' + ')}</p>
             <p>Daily calorie intake: ${totalCalories.toFixed(0)} kcal (${TDEEComparison} kcal)</p>
             <p>Daily protein intake: ${totalProtein.toFixed(1)} g (${proteinComparison} g, Weight x ${proteinBWRatio}, ${totalProteinPercentage}% of intake calories)</p>
+            <p>Most fit formula: ${mostFitFormula} ${mostFitFormulaPotion} potions/day</p>
         `;
     });
 
