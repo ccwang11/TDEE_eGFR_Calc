@@ -4,6 +4,8 @@ There are significant concerns regarding the nutritional needs of elderly, ill, 
 
 版本更新 Version history：
 
+V2.5: 2024/10/3 增加建議配方功能 Add most fit formula recommendation. 
+
 V2.4: 2024/9/30 輸出語言和增減重參數可以調整 Adjustable TDEE & output language. 
 
 V2.3: 2024/9/29 蛋白質需求量考慮壓力因子 Protein needs adjust by stress factors.
