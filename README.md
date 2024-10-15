@@ -4,6 +4,8 @@ There are significant concerns regarding the nutritional needs of elderly, ill, 
 
 版本更新 Version history：
 
+V2.7: 2024/10/16 增加匯出報告功能 Add report export botton.
+
 V2.6: 2024/10/5 配方選單維護 Formula list maintainance.
 
 V2.5: 2024/10/3 增加建議配方功能 Add most fit formula recommendation.
