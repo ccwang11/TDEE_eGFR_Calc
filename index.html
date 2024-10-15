@@ -741,53 +741,61 @@
         } 
 
         resultsDiv.innerHTML = reportLanguage === 'TC' ? `
-            <h3>${caseName} ${formattedDate} 營養評估：</h3>
-            ${eGFRResult}
-            <p>身高 ${height} 公分, 體重 ${weight} 公斤, 身體質量指數 (BMI) ${BMI}</p>
-            <p>${TDEEType} ${TDEE} 大卡 (${BMREquation} 算式)</p>
-            <p>每日蛋白質建議量 ${proteinNeeds.toFixed(1)} 克 (建議熱量的 ${proteinPercentage}%)</p>
-            <p>食物組合：${formulaDetails.join(' + ')}</p>
-            <p>每日攝取熱量 ${totalCalories.toFixed(0)} 大卡 (${TDEEComparison} 大卡)</p>
-            <p>每日攝取蛋白質 ${totalProtein.toFixed(1)} 克 (${proteinComparison} 克, 體重 x ${proteinBWRatio}, 攝取熱量的 ${totalProteinPercentage}%)</p>
-            ${mostFitFormula !== '' ? `<p>${mostFitFormulaResult}</p>` : ''}
+<h3>${caseName} ${formattedDate} 營養評估：</h3>
+${eGFRResult}
+<p>身高 ${height} 公分, 體重 ${weight} 公斤, 身體質量指數 (BMI) ${BMI}</p>
+<p>${TDEEType} ${TDEE} 大卡 (${BMREquation} 算式)</p>
+<p>每日蛋白質建議量 ${proteinNeeds.toFixed(1)} 克 (建議熱量的 ${proteinPercentage}%)</p>
+<p>食物組合：${formulaDetails.join(' + ')}</p>
+<p>每日攝取熱量 ${totalCalories.toFixed(0)} 大卡 (${TDEEComparison} 大卡)</p>
+<p>每日攝取蛋白質 ${totalProtein.toFixed(1)} 克 (${proteinComparison} 克, 體重 x ${proteinBWRatio}, 攝取熱量的 ${totalProteinPercentage}%)</p>
+${mostFitFormula !== '' ? `<p>${mostFitFormulaResult}</p>` : ''}
         ` : `
-            <h3>${caseName} ${formattedDate} Nutritional Assessment:</h3>
-            ${eGFRResult}
-            <p>Height: ${height} cm, Weight: ${weight} kg, BMI: ${BMI}</p>
-            <p>${TDEEType}: ${TDEE} kcal (${BMREquation} equation)</p>
-            <p>Daily protein requirement: ${proteinNeeds.toFixed(1)} g (${proteinPercentage}% of recommended calories)</p>
-            <p>Selected foods: ${formulaDetails.join(' + ')}</p>
-            <p>Daily calorie intake: ${totalCalories.toFixed(0)} kcal (${TDEEComparison} kcal)</p>
-            <p>Daily protein intake: ${totalProtein.toFixed(1)} g (${proteinComparison} g, Weight x ${proteinBWRatio}, ${totalProteinPercentage}% of intake calories)</p>
-            ${mostFitFormula !== '' ? `<p>${mostFitFormulaResult}</p>` : ''}
+<h3>${caseName} ${formattedDate} Nutritional Assessment:</h3>
+${eGFRResult}
+<p>Height: ${height} cm, Weight: ${weight} kg, BMI: ${BMI}</p>
+<p>${TDEEType}: ${TDEE} kcal (${BMREquation} equation)</p>
+<p>Daily protein requirement: ${proteinNeeds.toFixed(1)} g (${proteinPercentage}% of recommended calories)</p>
+<p>Selected foods: ${formulaDetails.join(' + ')}</p>
+<p>Daily calorie intake: ${totalCalories.toFixed(0)} kcal (${TDEEComparison} kcal)</p>
+<p>Daily protein intake: ${totalProtein.toFixed(1)} g (${proteinComparison} g, Weight x ${proteinBWRatio}, ${totalProteinPercentage}% of intake calories)</p>
+${mostFitFormula !== '' ? `<p>${mostFitFormulaResult}</p>` : ''}
         `;
     });
 
     // 匯出結果為文字檔的功能
     document.getElementById('exportButton').addEventListener('click', function() {
-        // 取得結果內容
-        const resultsContent = document.getElementById('results').innerText;
+        // 取得結果的 HTML 內容
+        const resultsDiv = document.getElementById('results');
+
+        // 將結果中的 <p> 標籤轉換為換行符，確保正確格式化
+        let resultsContent = resultsDiv.innerHTML
+            .replace(/<h3>/g, '')       // 去除 <h3> 標籤
+            .replace(/<\/h3>/g, '\n')   // 替換 </h3> 為換行
+            .replace(/<p>/g, '')        // 去除 <p> 標籤
+            .replace(/<\/p>/g, ' \n')    // 替換 </p> 為換行
+            .replace(/\n{2,}/g, '\n');  // 將多個連續的換行符替換為一個換行符
 
         // 取得 "姓名" 欄位的值
         const caseName = document.getElementById('caseName').value.trim();
 
         let fileName;
 
-        // 如果姓名不為空，使用姓名來命名檔案，否則使用時間戳
+        // 取得當前時間，並格式化為 yyyymmdd_hhmmss 格式
+        const now = new Date();
+        const year = String(now.getFullYear());
+        const month = String(now.getMonth() + 1).padStart(2, '0'); // 月份從 0 開始，因此要加 1
+        const day = String(now.getDate()).padStart(2, '0');
+        const hour = String(now.getHours()).padStart(2, '0');
+        const minute = String(now.getMinutes()).padStart(2, '0');
+        const second = String(now.getSeconds()).padStart(2, '0');
+    
+        // 如果姓名不為空，使用姓名來命名檔案，否則只使用時間戳
         if (caseName) {
-            fileName = `TDEE_${caseName}.txt`;
+            fileName = `TDEE_${caseName}_${year}${month}${day}.txt`;
         } else {
-            // 取得當前時間，並格式化為 mmddhhmmss 格式
-            const now = new Date();
-            const month = String(now.getMonth() + 1).padStart(2, '0'); // 月份從 0 開始，因此要加 1
-            const day = String(now.getDate()).padStart(2, '0');
-            const hour = String(now.getHours()).padStart(2, '0');
-            const minute = String(now.getMinutes()).padStart(2, '0');
-            const second = String(now.getSeconds()).padStart(2, '0');
-
-            fileName = `TDEE_${month}${day}${hour}${minute}${second}.txt`;
+            fileName = `TDEE_${year}${month}${day}_${hour}${minute}${second}.txt`;
         }
-
         // 創建 Blob 物件，並將其類型設為 'text/plain'
         const blob = new Blob([resultsContent], { type: 'text/plain' });
 
@@ -804,7 +812,7 @@
 
         // 釋放 Blob URL
         URL.revokeObjectURL(downloadUrl);
-        });
+     });
 
 </script>
 
