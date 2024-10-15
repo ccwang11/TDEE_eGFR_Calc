@@ -340,6 +340,8 @@
     <button type="submit" form="healthForm">開始計算 Submit</button>
 
     <div id="results" class="results"></div>
+
+    <button id="exportButton">匯出報告 Export</button>
 </div>
 
 <script>
@@ -760,6 +762,49 @@
             ${mostFitFormula !== '' ? `<p>${mostFitFormulaResult}</p>` : ''}
         `;
     });
+
+    // 匯出結果為文字檔的功能
+    document.getElementById('exportButton').addEventListener('click', function() {
+        // 取得結果內容
+        const resultsContent = document.getElementById('results').innerText;
+
+        // 取得 "姓名" 欄位的值
+        const caseName = document.getElementById('caseName').value.trim();
+
+        let fileName;
+
+        // 如果姓名不為空，使用姓名來命名檔案，否則使用時間戳
+        if (caseName) {
+            fileName = `TDEE_${caseName}.txt`;
+        } else {
+            // 取得當前時間，並格式化為 mmddhhmmss 格式
+            const now = new Date();
+            const month = String(now.getMonth() + 1).padStart(2, '0'); // 月份從 0 開始，因此要加 1
+            const day = String(now.getDate()).padStart(2, '0');
+            const hour = String(now.getHours()).padStart(2, '0');
+            const minute = String(now.getMinutes()).padStart(2, '0');
+            const second = String(now.getSeconds()).padStart(2, '0');
+
+            fileName = `TDEE_${month}${day}${hour}${minute}${second}.txt`;
+        }
+
+        // 創建 Blob 物件，並將其類型設為 'text/plain'
+        const blob = new Blob([resultsContent], { type: 'text/plain' });
+
+        // 創建下載的 URL
+        const downloadUrl = URL.createObjectURL(blob);
+
+        // 創建一個隱藏的下載連結
+        const a = document.createElement('a');
+        a.href = downloadUrl;
+        a.download = fileName;
+
+        // 模擬點擊該連結並觸發下載
+        a.click();
+
+        // 釋放 Blob URL
+        URL.revokeObjectURL(downloadUrl);
+        });
 
 </script>
 
